@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>OnlyClubs</title>
+{% endblock %}
+
+{% block body %}
+<div class="content">
+    <h1>Posts</h1>
+    {% if posts|length < 1 %} <h4>There are no posts. Create one below!</h4>
+        {% else %}
+
+        <table>
+            <tr>
+                <th>Post</th>
+                <th>Added</th>
+                <th>Actions</th>
+            </tr>
+
+            {% for post in posts %}
+            <tr>
+                <td>{{post.content}}</td>
+                <td>{{post.date_created.date()}}</td>
+                <td>
+                    <a href="/delete/{{post.id}}">Delete</a>
+                    <br>
+                    <a href="/update/{{post.id}}">Update</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+        {% endif %}
+
+
+        <form action="/" method="POST">
+            <input type="text" name="content" id="content">
+            <input type="submit" value="Add Post">
+
+        </form>
+</div>
+{% endblock %}
