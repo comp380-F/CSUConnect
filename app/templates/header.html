@@ -1,0 +1,16 @@
+{% block head %}
+<link rel="stylesheet" href="{{url_for('static', filename='css/header.css')}}">
+{% endblock %}
+
+{% block header %}
+<header class="site-header">
+    <div class="title">OnlyClubs</div>
+    <nav class="navbar">
+        <ul>
+            <li><a href="#events">EVENTS</a></li>
+            <li><a href="#post-event">POST EVENT</a></li>
+            <li><a href="#account">ACCOUNT</a></li>
+        </ul>
+    </nav>
+</header>
+{% endblock %}

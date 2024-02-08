@@ -1,0 +1,40 @@
+.site-header
+{
+    background-color: #D32F2F;
+    /* Nice red color */
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+}
+
+.title
+{
+    font-size: 24px;
+}
+
+.navbar ul
+{
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar ul li
+{
+    margin-left: 20px;
+}
+
+.navbar ul li a
+{
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+.navbar ul li a:hover
+{
+    text-decoration: underline;
+}
