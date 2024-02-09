@@ -10,7 +10,13 @@
     {% block head %}{% endblock %}
   </head>
   <body>
-    {% block header %}{% endblock %}
-    <div class="container">{% block body %}{% endblock %}</div>
+    {% if include_header %} 
+      {% include 'header.html' %} 
+    {% endif %} 
+    
+    <div class="container">
+      {% block body %}
+      {% endblock %}
+    </div>
   </body>
 </html>

@@ -9,6 +9,6 @@ bp = Blueprint('main', __name__)
 def index():
     posts = Post.query.order_by(Post.date_created).all()
     users = User.query.order_by(User.id).all()
-    return render_template('index.html', posts=posts, user=current_user)
+    return render_template('index.html', posts=posts, user=current_user, include_header=True)
 
 

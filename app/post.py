@@ -15,7 +15,7 @@ def new_post():
         post_title = request.form['title']
         post_content = request.form['content']
 
-        new_post = Post(title=post_title, content=post_content, user_id=current_user.id)
+        new_post = Post(title=post_title, content=post_content, user_id=current_user.id, include_header=True)
 
         try:
             db.session.add(new_post)
@@ -26,7 +26,7 @@ def new_post():
     else:
         posts = Post.query.order_by(Post.date_created).all()
 
-        return render_template("new-post.html", posts=posts, user=current_user)
+        return render_template("new-post.html", posts=posts, user=current_user, include_header=True)
 
 
 @post_bp.route('/delete/<int:id>')
@@ -55,4 +55,4 @@ def update(id):
         except:
             return 'There was an issue updating your post'
     else:
-        return render_template('update.html', post=post)
+        return render_template('update.html', post=post, include_header=True)

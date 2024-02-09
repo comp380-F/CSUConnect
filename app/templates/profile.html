@@ -1,10 +1,15 @@
-{% extends 'base.html' %} {% block head %}
+{% extends 'base.html' %} 
+
+{% block head %}
 <link
   rel="stylesheet"
   href="{{url_for('static', filename='css/profile.css')}}"
 />
 <title>User Profile</title>
-{% endblock %} {% include 'header.html' %} {% block body %}
+{% endblock %}  
+
+
+{% block body %}
 <div class="profile-container">
   <h1>User Profile</h1>
   <div class="user-info">
@@ -36,5 +41,4 @@
     {% endfor %}
   </div>
 </div>
-
 {% endblock %}

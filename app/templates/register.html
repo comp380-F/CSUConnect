@@ -4,7 +4,9 @@
   rel="stylesheet"
   href="{{url_for('static', filename='css/register.css')}}"
 />
-{% endblock %} {% block body %}
+{% endblock %} 
+
+{% block body %}
 <div class="form-container">
   <h2>Register</h2>
   <form action="/register" method="POST">

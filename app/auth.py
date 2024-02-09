@@ -30,7 +30,7 @@ def register():
         except:
             return 'Failed to register user'
         
-    return render_template('register.html', user=current_user)
+    return render_template('register.html', user=current_user, include_header=True)
 
 @auth_bp.route('/login', methods=['GET', 'POST'])
 def login():
@@ -46,7 +46,7 @@ def login():
         else:
             flash('Login failed. Check your username and password.')
     
-    return render_template('login.html', user=current_user)
+    return render_template('login.html', user=current_user, include_header=True)
 
 @auth_bp.route('/logout')
 def logout():
