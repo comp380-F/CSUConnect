@@ -1,15 +1,33 @@
-{% extends 'base.html' %}
-
-{% block head %}
+{% extends 'base.html' %} {% block head %}
 <title>Register</title>
-{% endblock %}
-
-{% block body %}
-<div class="register">
-    <form action="/register" method="POST">
-        <input type="text" name="username" placeholder="Your username" id="username">
-        <input type="password" name="password" placeholder="Password" id="password">
-        <input type="submit" value="Register">
-    </form>
+<link
+  rel="stylesheet"
+  href="{{url_for('static', filename='css/register.css')}}"
+/>
+{% endblock %} {% block body %}
+<div class="form-container">
+  <h2>Register</h2>
+  <form action="/register" method="POST">
+    <div class="form-group">
+      <label for="username">Username:</label>
+      <input type="text" id="username" name="username" required />
+    </div>
+    <div class="form-group">
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" required />
+    </div>
+    <div class="form-group">
+      <label for="confirm-password">Confirm Password:</label>
+      <input
+        type="password"
+        id="confirm-password"
+        name="confirm-password"
+        required
+      />
+    </div>
+    <div class="form-actions">
+      <button type="submit" class="btn">Register</button>
+    </div>
+  </form>
 </div>
 {% endblock %}

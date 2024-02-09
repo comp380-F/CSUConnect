@@ -8,7 +8,9 @@ bp = Blueprint('main', __name__)
 
 @bp.route('/', methods=['GET', 'POST'])
 def index():
-    return render_template('index.html')
+    posts = Post.query.order_by(Post.date_created).all()
+    users = User.query.order_by(User.id).all()
+    return render_template('index.html', posts=posts, user=current_user)
 
 @bp.route('/register', methods=['GET', 'POST'])
 def register():
@@ -26,7 +28,7 @@ def register():
         except:
             return 'Failed to register user'
         
-    return render_template('register.html')
+    return render_template('register.html', user=current_user)
 
 @bp.route('/login', methods=['GET', 'POST'])
 def login():
@@ -42,7 +44,7 @@ def login():
         else:
             flash('Login failed. Check your username and password.')
     
-    return render_template('login.html')
+    return render_template('login.html', user=current_user)
 
 @bp.route('/logout')
 def logout():
@@ -50,15 +52,18 @@ def logout():
     return redirect('/')
 
 # Routes
-    
-@bp.route('/new_post', methods=['POST', 'GET'])
+
+@bp.route('/new-post', methods=['POST', 'GET'])
+@login_required
 def new_post():
     if request.method == 'POST':
         if not current_user.is_authenticated:
             return redirect('/login')
         
+        post_title = request.form['title']
         post_content = request.form['content']
-        new_post = Post(content=post_content, user_id=current_user.id)
+
+        new_post = Post(title=post_title, content=post_content, user_id=current_user.id)
 
         try:
             db.session.add(new_post)
@@ -69,7 +74,7 @@ def new_post():
     else:
         posts = Post.query.order_by(Post.date_created).all()
 
-        return render_template("new_post.html", posts=posts)
+        return render_template("new-post.html", posts=posts)
 
 
 @bp.route('/delete/<int:id>')
