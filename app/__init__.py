@@ -28,6 +28,15 @@ def create_app(config_class=Config):
     from .routes import bp as routes_bp
     app.register_blueprint(routes_bp)
 
+    from .auth import auth_bp
+    app.register_blueprint(auth_bp)
+
+    from .user import user_bp
+    app.register_blueprint(user_bp)
+
+    from .post import post_bp
+    app.register_blueprint(post_bp)
+
     return app
 
 

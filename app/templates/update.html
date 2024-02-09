@@ -1,19 +1,14 @@
-{% extends 'base.html' %}
-
-{% block head %}
+{% extends 'base.html' %} {% block head %}
 <title>Update Post</title>
-{% endblock %}
-
-{% block body %}
+{% endblock %} {% block body %}
 <div class="content">
-    <h1>Update Post</h1>
+  <h1>Update Post</h1>
 
-    <div class="form">
-        <form action="/update/{{post.id}}" method="POST">
-            <input type="text" name="content" id="content" value="{{post.content}}">
-            <input type="submit" value="Update">
-        </form>
-    </div>
-
+  <div class="form">
+    <form action="/update/{{post.id}}" method="POST">
+      <input type="text" name="content" id="content" value="{{post.content}}" />
+      <input type="submit" value="Update" />
+    </form>
+  </div>
 </div>
 {% endblock %}

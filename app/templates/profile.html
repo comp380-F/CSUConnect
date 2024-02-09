@@ -1,0 +1,40 @@
+{% extends 'base.html' %} {% block head %}
+<link
+  rel="stylesheet"
+  href="{{url_for('static', filename='css/profile.css')}}"
+/>
+<title>User Profile</title>
+{% endblock %} {% include 'header.html' %} {% block body %}
+<div class="profile-container">
+  <h1>User Profile</h1>
+  <div class="user-info">
+    <p><strong>Username:</strong> {{ user.username }}</p>
+    <p><strong>Email:</strong> {{user.email}}</p>
+  </div>
+
+  <div class="actions">
+    <a href="#" class="btn">Edit Profile</a>
+    <a href="{{ url_for('auth.logout') }}" class="btn">Logout</a>
+  </div>
+
+  <div class="user-posts">
+    <h3>Your Posts</h3>
+    {% for post in current_user.posts %}
+    <div class="post">
+      <h2 class="post-title">
+        {{ post.title }}<span class="red-stripe"></span>
+      </h2>
+      <p class="post-author">Posted by {{ post.user.full_name()}}</p>
+      <p class="post-content">{{ post.content }}</p>
+      <div class="buttons">
+        <button class="btn">Read More</button>
+        <button class="btn">Join Event</button>
+      </div>
+    </div>
+    {% else %}
+    <p>No posts found.</p>
+    {% endfor %}
+  </div>
+</div>
+
+{% endblock %}
