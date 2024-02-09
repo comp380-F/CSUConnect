@@ -1,0 +1,27 @@
+{% block head %}
+<link
+  rel="stylesheet"
+  href="{{url_for('static', filename='css/header.css')}}"
+/>
+{% endblock %} {% block header %}
+<header class="site-header">
+  <div class="title"><a href="/">OnlyClubs</a></div>
+  <nav class="navbar">
+    <ul class="navbar-ul">
+      <li><a href="#events">EVENTS</a></li>
+      <li><a href="/new-post">POST EVENT</a></li>
+      {% if user.is_authenticated %}
+      <li class="dropdown">
+        <a href="#account">ACCOUNT</a>
+        <ul class="dropdown-content">
+          <li><a href="/profile">Profile</a></li>
+          <li><a href="/logout">Sign Out</a></li>
+        </ul>
+      </li>
+      {% else %}
+      <li><a href="/login">LOGIN</a></li>
+      {% endif %}
+    </ul>
+  </nav>
+</header>
+{% endblock %}
