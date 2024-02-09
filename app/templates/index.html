@@ -5,17 +5,15 @@
 {% endblock %} 
 
 {% block body %} 
-  {% for post in posts %}
-  <div class="post">
-    <h2 class="post-title">{{ post.title }}<span class="red-stripe"></span></h2>
-    <p class="post-author">Posted by {{ post.user.full_name()}}</p>
-    <p class="post-content">{{ post.content }}</p>
-    <div class="buttons">
-      <button class="btn">Read More</button>
-      <button class="btn">Join Event</button>
-    </div>
+<div class="min-h-screen bg-gray-100 py-10">
+  <div class="max-w-4xl mx-auto px-4">
+    <h3 class="text-xl font-semibold mb-4">Recent Posts</h3>
+      {% for post in posts %}
+        {% include 'post.html' with context %}
+      {% else %}
+        <p>No posts found.</p>
+      {% endfor %} 
+    </h3>
   </div>
-  {% else %}
-  <p>No posts found.</p>
-  {% endfor %} 
+</div>
 {% endblock %}

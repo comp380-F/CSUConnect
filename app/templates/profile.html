@@ -10,35 +10,75 @@
 
 
 {% block body %}
-<div class="profile-container">
-  <h1>User Profile</h1>
-  <div class="user-info">
-    <p><strong>Username:</strong> {{ user.username }}</p>
-    <p><strong>Email:</strong> {{user.email}}</p>
-  </div>
+<!-- Profile Container -->
 
-  <div class="actions">
-    <a href="#" class="btn">Edit Profile</a>
-    <a href="{{ url_for('auth.logout') }}" class="btn">Logout</a>
-  </div>
+{% include 'sidebar.html' %}
 
-  <div class="user-posts">
-    <h3>Your Posts</h3>
-    {% for post in current_user.posts %}
-    <div class="post">
-      <h2 class="post-title">
-        {{ post.title }}<span class="red-stripe"></span>
-      </h2>
-      <p class="post-author">Posted by {{ post.user.full_name()}}</p>
-      <p class="post-content">{{ post.content }}</p>
-      <div class="buttons">
-        <button class="btn">Read More</button>
-        <button class="btn">Join Event</button>
+<div class="w-full">
+  <div class=" bg-gray-100">
+    <div class="bg-white shadow">
+      <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+          <h1 class="text-3xl font-bold leading-tight text-gray-900">
+              User Profile
+          </h1>
       </div>
+  </div>
+  <!-- Profile info -->
+  <div class="max-w-4xl mx-auto py-6 sm:px-6 lg:px-8 mt-6">
+    <div class="bg-white shadow overflow-hidden sm:rounded-lg">
+        <div class="px-4 py-5 sm:px-6 flex items-center">
+            <img class="h-12 w-12 rounded-full" src="path/to/your/avatar.jpg" alt="User avatar">
+            <h3 class="text-lg leading-6 font-medium text-gray-900 ml-4">
+              {{ user.full_name() }}
+            </h3>
+        </div>
+
+        <div class="border-t border-gray-200">
+            <dl>
+                <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                    <dt class="text-sm font-medium text-gray-500">
+                        Email
+                    </dt>
+                    <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                      {{ user.email }}
+                    </dd>
+                </div>
+                <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                    <dt class="text-sm font-medium text-gray-500">
+                        About
+                    </dt>
+                    <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    </dd>
+                </div>
+                
+            </dl>
+        </div>
     </div>
-    {% else %}
-    <p>No posts found.</p>
-    {% endfor %}
+    
+    <!-- Profile buttons -->
+    <div class="mt-8 flex space-x-4">
+        <a href="#" class="bg-csun-red hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
+            Edit Profile
+        </a>
+  
+        <a href="{{ url_for('auth.logout') }}" class="bg-csun-red hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
+          Logout
+      </a>
+        
+    </div>
+  </div>
+  
+  <!-- User Posts -->
+  <div class="min-h-screen bg-gray-100 py-10">
+    <div class="max-w-4xl mx-auto px-4">
+      <h3 class="text-xl font-semibold mb-4">Your Posts</h3>
+      {% for post in current_user.posts %}
+        {% include 'post.html' with context %}
+      {% else %}
+      <p class="text-gray-600">No posts found.</p>
+      {% endfor %}
+    </div>
   </div>
 </div>
 {% endblock %}
