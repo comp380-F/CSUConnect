@@ -1,3 +1,5 @@
-# Environment directory
+# Files and directories for git to ignore
 venv
 .vercel
+__pycache__
+.DS_Store
