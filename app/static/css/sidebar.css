@@ -1,0 +1,12 @@
+@layer components
+{
+    .sidebar
+    {
+        @apply fixed top-0 left-0 h-screen w-16 m-0 py-3 flex flex-col bg-gray-800 text-white text-center shadow;
+    }
+
+    .sidebar-icon
+    {
+        @apply relative flex items-center justify-center h-12 w-12 mt-2 mb-2 mx-auto shadow-lg
+    }
+}

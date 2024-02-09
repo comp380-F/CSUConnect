@@ -1,0 +1,6 @@
+@import './buttons.css';
+@import './sidebar.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

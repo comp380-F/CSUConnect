@@ -7,7 +7,8 @@
       rel="stylesheet"
       href="{{url_for('static', filename='css/main.css')}}"
     />
-    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
+    <link rel="stylesheet" href="{{url_for('static',filename='dist/css/output.css')}}">
+    <script src="https://kit.fontawesome.com/73a2fe9eaa.js" crossorigin="anonymous"></script>
     {% block head %}{% endblock %}
   </head>
   <body>
@@ -15,7 +16,7 @@
       {% include 'header.html' %} 
     {% endif %} 
     
-    <div class="container">
+    <div class="mx-auto">
       {% block body %}
       {% endblock %}
     </div>
