@@ -7,6 +7,6 @@ user_bp = Blueprint('user', __name__)
 @user_bp.route('/profile', methods=['GET', 'POST'])
 def profile():
     if current_user.is_authenticated:
-        return render_template('profile.html', user=current_user, include_header=True)
+        return render_template('profile.html', user=current_user, include_header=False)
     else:
         return redirect('/')

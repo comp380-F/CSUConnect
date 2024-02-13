@@ -1,47 +1,42 @@
-{% extends 'base.html' %} {% block head %}
+{% extends 'base.html' %}
+
+{% block head %}
 <title>Register</title>
-<link
-  rel="stylesheet"
-  href="{{url_for('static', filename='css/register.css')}}"
-/>
-{% endblock %} 
+{% endblock %}
 
 {% block body %}
-<div class="form-container">
-  <h2>Register</h2>
-  <form action="/register" method="POST">
-    <div class="form-group">
-      <label for="username">Username:</label>
-      <input type="text" id="username" name="username" required />
-    </div>
-    <div class="form-group">
-      <label for="email">Email:</label>
-      <input type="text" id="email" name="email" required />
-    </div>
-    <div class="form-group">
-      <label for="firstname">First name:</label>
-      <input type="text" id="firstname" name="firstname" required />
-    </div>
-    <div class="form-group">
-      <label for="lastname">Last name:</label>
-      <input type="text" id="lastname" name="lastname" required />
-    </div>
-    <div class="form-group">
-      <label for="password">Password:</label>
-      <input type="password" id="password" name="password" required />
-    </div>
-    <div class="form-group">
-      <label for="confirm-password">Confirm Password:</label>
-      <input
-        type="password"
-        id="confirm-password"
-        name="confirm-password"
-        required
-      />
-    </div>
-    <div class="form-actions">
-      <button type="submit" class="btn">Register</button>
-    </div>
-  </form>
+<div class="min-h-screen bg-gray-100 flex items-center justify-center">
+  <div class="max-w-md w-full bg-white p-6 rounded-lg shadow-md">
+    <h2 class="text-2xl font-bold text-center mb-6">Register</h2>
+    <form action="/register" method="POST" class="space-y-4">
+      <div class="form-group">
+        <label for="username" class="block text-sm font-medium text-gray-700">Username:</label>
+        <input type="text" id="username" name="username" class="mt-1 block w-full p-2 border border-gray-300 rounded-md" required />
+      </div>
+      <div class="form-group">
+        <label for="email" class="block text-sm font-medium text-gray-700">Email:</label>
+        <input type="text" id="email" name="email" class="mt-1 block w-full p-2 border border-gray-300 rounded-md" required />
+      </div>
+      <div class="form-group">
+        <label for="firstname" class="block text-sm font-medium text-gray-700">First name:</label>
+        <input type="text" id="firstname" name="firstname" class="mt-1 block w-full p-2 border border-gray-300 rounded-md" required />
+      </div>
+      <div class="form-group">
+        <label for="lastname" class="block text-sm font-medium text-gray-700">Last name:</label>
+        <input type="text" id="lastname" name="lastname" class="mt-1 block w-full p-2 border border-gray-300 rounded-md" required />
+      </div>
+      <div class="form-group">
+        <label for="password" class="block text-sm font-medium text-gray-700">Password:</label>
+        <input type="password" id="password" name="password" class="mt-1 block w-full p-2 border border-gray-300 rounded-md" required />
+      </div>
+      <div class="form-group">
+        <label for="confirm-password" class="block text-sm font-medium text-gray-700">Confirm Password:</label>
+        <input type="password" id="confirm-password" name="confirm-password" class="mt-1 block w-full p-2 border border-gray-300 rounded-md" required />
+      </div>
+      <div class="form-actions text-center">
+        <button type="submit" class="px-4 py-2 bg-csun-red text-white font-bold rounded hover:bg-red-700">Register</button>
+      </div>
+    </form>
+  </div>
 </div>
 {% endblock %}
