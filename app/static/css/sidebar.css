@@ -1,12 +1,22 @@
 @layer components
 {
-    .sidebar
+    .custom-sidebar-icon
     {
-        @apply fixed top-0 left-0 h-screen w-16 m-0 py-3 flex flex-col bg-gray-800 text-white text-center shadow;
-    }
-
-    .sidebar-icon
-    {
-        @apply relative flex items-center justify-center h-12 w-12 mt-2 mb-2 mx-auto shadow-lg
+        @apply relative 
+            flex 
+            items-center 
+            justify-center 
+            w-12 
+            mt-2 
+            mb-2 
+            p-4
+            mx-auto 
+            bg-white 
+            text-gray-700 
+            shadow-lg 
+            hover:bg-gray-800
+            hover:text-white
+            hover:cursor-pointer
+            ;
     }
 }

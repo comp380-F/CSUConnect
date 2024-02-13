@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"> 
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -15,10 +15,9 @@
     {% if include_header %} 
       {% include 'header.html' %} 
     {% endif %} 
+  
+    {% block body %}
+    {% endblock %}
     
-    <div class="mx-auto">
-      {% block body %}
-      {% endblock %}
-    </div>
   </body>
 </html>
