@@ -5,12 +5,12 @@
 {% endblock %} 
 
 {% block body %}
-<div class="content">
+<div class="description">
   <h1>Update Post</h1>
 
   <div class="form">
     <form action="/update/{{post.id}}" method="POST">
-      <input type="text" name="content" id="content" value="{{post.content}}" />
+      <input type="text" name="description" id="description" value="{{post.description}}" />
       <input type="submit" value="Update" />
     </form>
   </div>
