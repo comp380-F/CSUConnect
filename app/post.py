@@ -11,11 +11,12 @@ def new_post():
     if request.method == 'POST':
         if not current_user.is_authenticated:
             return redirect('/login')
-        
-        post_title = request.form['title']
-        post_content = request.form['content']
 
-        new_post = Post(title=post_title, content=post_content, user_id=current_user.id, include_header=True)
+        post_title = request.form['title']
+        post_description = request.form['description']
+        post_club = request.form['club']
+
+        new_post = Post(title=post_title, description=post_description, club=post_club, user_id=current_user.id)
 
         try:
             db.session.add(new_post)
@@ -47,7 +48,7 @@ def update(id):
     post = Post.query.get_or_404(id)
 
     if request.method == 'POST':
-        post.content = request.form['content']
+        post.description = request.form['description']
 
         try:
             db.session.commit()
