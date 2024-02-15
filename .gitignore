@@ -1,5 +1,6 @@
 # Files and directories for git to ignore
 venv
+env
 .vercel
 __pycache__
 app/__pycache__
