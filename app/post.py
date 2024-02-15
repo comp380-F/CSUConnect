@@ -29,6 +29,9 @@ def new_post():
 
         return render_template("new-post.html", posts=posts, user=current_user, include_header=True)
 
+@post_bp.route('/post/<int:id>')
+def read_more(id):
+    return 'Hello, World'
 
 @post_bp.route('/delete/<int:id>')
 def delete(id):
