@@ -1,105 +1,43 @@
-{% extends 'base.html' %} 
+<!-- PROFILE PAGE -->
 
+{% extends 'base.html' %}
+
+<!-- Metadata -->
 {% block head %}
-<link
-  rel="stylesheet"
-  href="{{url_for('static', filename='css/profile.css')}}"
-/>
 <title>User Profile</title>
-{% endblock %}  
+{% endblock %}
 
-<!-- Profile Page -->
+{% block body %}
 
-<div class="flex min-h-screen">
-  {% block body %}
+<div class="flex bg-gray-100 min-h-screen pt-20"> <!-- Adjusted for fixed header -->
+
   <!-- Sidebar -->
-  <div class="fixed 
-              top-0 
-              left-0 
-              h-screen 
-              w-16 
-              m-0 
-              py-3 
-              flex 
-              flex-col 
-              bg-csun-red 
-              text-white 
-              text-center 
-              shadow"
-              >
+  <div class="fixed top-0 left-0 h-screen w-16 m-0 py-3 flex flex-col bg-csun-red text-white text-center shadow-lg z-40"> <!-- Sidebar -->
+
     <!-- Sidebar Icons -->
     <a href="/">
-      <i class="custom-sidebar-icon
-              fa-solid 
-              fa-home"></i>
+      <i class="fas fa-home custom-sidebar-icon"></i>
     </a>
-    <i class="custom-sidebar-icon
-              fa-solid 
-              fa-user"></i>
-    <i class="custom-sidebar-icon
-              fa-solid 
-              fa-bullhorn"></i>
+    <i class="fas fa-user custom-sidebar-icon"></i>
+    <i class="fas fa-bullhorn custom-sidebar-icon"></i>
+  </div> <!-- End Sidebar -->
+
+  <!-- User Name Header -->
+  <div class="fixed top-0 left-0 right-0 bg-white shadow-md z-30">
+    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+        <h1 class="text-3xl font-bold leading-tight text-gray-900">
+          {{user.full_name()}}
+        </h1>
+    </div>
   </div>
 
   <!-- Main Profile Page Content -->
-  <div class="mx-auto pl-16">
-    <div class=" bg-gray-100">
-      <div class="bg-white shadow">
-        <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-            <h1 class="text-3xl font-bold leading-tight text-gray-900">
-              {{user.full_name()}}
-            </h1>
-        </div>
-    </div>
-    <!-- Profile info -->
-    <div class="max-w-4xl mx-auto py-6 sm:px-6 lg:px-8 mt-6">
-      <div class="bg-white shadow overflow-hidden sm:rounded-lg">
-          <div class="px-4 py-5 sm:px-6 flex items-center">
-              <i class="text-3xl rounded-full fa-solid fa-user"></i>
-              <h3 class="text-lg leading-6 font-medium text-gray-900 ml-4">
-                {{ user.full_name() }}
-              </h3>
-          </div>
+  <div class="container mx-auto flex flex-wrap pt-4 pb-12">
 
-          <div class="border-t border-gray-200">
-              <dl>
-                  <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                      <dt class="text-sm font-medium text-gray-500">
-                          Email
-                      </dt>
-                      <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                        {{ user.email }}
-                      </dd>
-                  </div>
-                  <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                      <dt class="text-sm font-medium text-gray-500">
-                          About
-                      </dt>
-                      <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                      </dd>
-                  </div>
-                  
-              </dl>
-          </div>
-      </div>
-      
-      <!-- Profile buttons -->
-      <div class="mt-8 flex space-x-4">
-          <a href="#" class="bg-csun-red hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
-              Edit Profile
-          </a>
-    
-          <a href="{{ url_for('auth.logout') }}" class="bg-csun-red hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
-            Logout
-        </a>
-          
-      </div>
-    </div>
-    
-    <!-- Make a New Post -->
-    <div class="max-w-2xl mx-auto py-6">
-      <div class="bg-white p-6 mx-auto rounded-lg shadow-lg">
+    <!-- Make a New Post & User Posts -->
+    <div class="lg:w-3/4 w-full lg:pr-4 pl-20 pt-4"> 
+      <!-- Make a New Post -->
+      <div class="bg-white p-6 rounded-lg shadow-lg mb-4">
         <h2 class="text-2xl font-semibold mb-4">Post an Event</h2>
         <form action="/new-post" method="POST">
           <div class="mb-4">
@@ -118,22 +56,61 @@
             <button type="submit" class="inline-flex items-center px-4 py-2 bg-red-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-red-700 active:bg-red-900 focus:outline-none focus:border-red-900 focus:ring ring-red-300 disabled:opacity-25 transition ease-in-out duration-150">Post Event</button>
           </div>
         </form>
-      </div>
-    </div>
-    
+      </div> <!-- End Make a New Post -->
 
-    <!-- User Posts -->
-    <div class="min-h-screen bg-gray-100 py-10">
-      <div class="max-w-4xl mx-auto px-4">
+      <!-- User Posts -->
+      <div>
         <h3 class="text-xl font-semibold mb-4">Your Posts</h3>
-        {% for post in current_user.posts %}
-          {% include 'post.html' with context %}
-        {% else %}
-        <p class="text-gray-600">No posts found.</p>
-        {% endfor %}
-      </div>
+            {% for post in current_user.posts %}
+              {% include 'post.html' with context %}
+            {% else %}
+            <p class="text-gray-600">No posts found.</p>
+            {% endfor %}
+      </div>  <!-- End User Posts -->
     </div>
-  </div>
-  {% endblock %}
-</div>
 
+    <!-- Profile Info -->
+    <div class="lg:w-1/4 w-full lg:pl-4 pl-20 pt-4"> 
+      <div class="bg-white shadow overflow-hidden sm:rounded-lg">
+        <div class="px-4 py-5 sm:px-6 flex items-center">
+          <i class="fas fa-user-circle text-3xl rounded-full"></i>
+          <h3 class="text-lg leading-6 font-medium text-gray-900 ml-4">
+            {{ user.full_name() }}
+          </h3>
+        </div>
+
+        <div class="border-t border-gray-200">
+          <dl>
+            <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+              <dt class="text-sm font-medium text-gray-500">
+                Email
+              </dt>
+              <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                {{ user.email }}
+              </dd>
+            </div>
+            <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+              <dt class="text-sm font-medium text-gray-500">
+                About
+              </dt>
+              <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              </dd>
+            </div>
+          </dl>
+        </div>
+      </div>
+      
+      <div class="mt-8 flex space-x-4">
+        <a href="#" class="bg-csun-red hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
+            Edit Profile
+        </a>
+        <a href="{{ url_for('auth.logout') }}" class="bg-csun-red hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
+          Logout
+        </a>
+      </div>
+    </div> <!-- End Profile Info -->
+
+  </div> <!-- End Main Content Container -->
+</div> <!-- End Page Container -->
+{% endblock %}
