@@ -1,13 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Read More</title>
-</head>
-<body>
-    <h1>{{ post.title }}</h1>
-    <p><strong>Description:</strong> {{ post.description }}</p>
-    <p><strong>Club:</strong> {{ post.club }}</p>
-</body>
-</html>
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Read More</title>
+{% endblock %}
+
+{% block body %}
+<div class="min-h-screen bg-gray-100 flex items-center justify-center">
+  <div class="max-w-lg w-full bg-white p-8 rounded-lg shadow">
+    <h1 class="text-2xl font-bold mb-6">{{ post.title }}</h1>
+    <p class="text-gray-700 mb-4">{{ post.description }}</p>
+    <p class="text-gray-700 mb-4">Club: {{ post.club }}</p>
+  </div>
+</div>
+{% endblock %}

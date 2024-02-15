@@ -32,7 +32,7 @@ def new_post():
 @post_bp.route('/post/<int:id>')
 def read_more(id):
     post = Post.query.get_or_404(id)
-    return render_template('read-more.html', post=post, include_header=True)
+    return render_template('read-more.html', post=post, user=current_user,  include_header=True)
 
 @post_bp.route('/delete/<int:id>')
 def delete(id):
