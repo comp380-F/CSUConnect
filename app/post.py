@@ -18,6 +18,12 @@ def new_post():
         post_location = request.form['location']
         post_dateTime = request.form['datetime']
 
+        # Check if 'tbd' checkbox is checked
+        if 'tbd' in request.form:
+            post_dateTime = None  # Set to None if TBD
+        else:
+            post_dateTime = request.form['datetime']
+
         new_post = Post(title=post_title, description=post_description, 
         club=post_club, user_id=current_user.id, location=post_location, dateTime=post_dateTime)
 
