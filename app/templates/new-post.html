@@ -41,20 +41,28 @@
   const datetimeInput = document.getElementById('datetime');
   const tbdCheckbox = document.getElementById('tbd');
 
+  // Get current date and year
+  const currentDate = new Date();
+  const currentYear = currentDate.getFullYear();
+
+  // Set max and min values for the datetime input
+  datetimeInput.max = `${currentYear + 9}-12-31T23:59`; // Max year is current year + 9
+  datetimeInput.min = `${currentDate.toISOString().slice(0, 10)}T00:00`; // Min is current date
+
   tbdCheckbox.addEventListener('change', function() {
     if (this.checked) {
       datetimeInput.disabled = true;
       datetimeInput.value = ''; // Clear the value if TBD is checked
       datetimeInput.style.opacity = '0.3'; // Gray out input
       datetimeInput.style.pointerEvents = 'none'; // Disable pointer events
-      console.log(datetimeInput.all);
     }
-    else{
+    else {
       datetimeInput.disabled = false;
       datetimeInput.style.opacity = '1'; // Restore opacity
       datetimeInput.style.pointerEvents = 'auto'; // Enable pointer events
     }
   });
 </script>
+
 
 {% endblock %}
