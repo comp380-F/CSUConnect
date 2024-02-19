@@ -17,7 +17,6 @@ def new_event():
         event_description = request.form['description']
         event_club = request.form['club']
         event_location = request.form['location']
-        event_dateTime = request.form['datetime']
 
         # Check if 'tbd' checkbox is checked
         if 'tbd' in request.form:
