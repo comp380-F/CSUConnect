@@ -34,12 +34,12 @@
   <!-- Main Profile Page Content -->
   <div class="container mx-auto flex flex-wrap pt-4 pb-12">
 
-    <!-- Make a New Post & User Posts -->
+    <!-- Make a New Event & User Events -->
     <div class="lg:w-3/4 w-full lg:pr-4 pl-20 pt-4"> 
-      <!-- Make a New Post -->
+      <!-- Make a New Event -->
       <div class="bg-white p-6 rounded-lg shadow-lg mb-4">
         <h2 class="text-2xl font-semibold mb-4">Post an Event</h2>
-        <form action="/new-post" method="POST">
+        <form action="/new-event" method="POST">
           <div class="mb-4">
             <label for="title" class="block text-sm font-medium text-gray-700">Event Title</label>
             <input type="text" name="title" id="title" class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm" required>
@@ -56,17 +56,17 @@
             <button type="submit" class="inline-flex items-center px-4 py-2 bg-red-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-red-700 active:bg-red-900 focus:outline-none focus:border-red-900 focus:ring ring-red-300 disabled:opacity-25 transition ease-in-out duration-150">Post Event</button>
           </div>
         </form>
-      </div> <!-- End Make a New Post -->
+      </div> <!-- End Make a New Event -->
 
-      <!-- User Posts -->
+      <!-- User Events -->
       <div>
-        <h3 class="text-xl font-semibold mb-4">Your Posts</h3>
-            {% for post in current_user.posts %}
-              {% include 'post.html' with context %}
+        <h3 class="text-xl font-semibold mb-4">Your Events</h3>
+            {% for event in current_user.events %}
+              {% include 'event.html' with context %}
             {% else %}
-            <p class="text-gray-600">No posts found.</p>
+            <p class="text-gray-600">No Events found.</p>
             {% endfor %}
-      </div>  <!-- End User Posts -->
+      </div>  <!-- End User Events -->
     </div>
 
     <!-- Profile Info -->

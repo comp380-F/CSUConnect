@@ -8,8 +8,8 @@
 <div class="min-h-screen bg-gray-100 py-10">
   <div class="max-w-4xl mx-auto px-4">
     <h3 class="text-xl font-semibold mb-4">Recent Posts</h3>
-      {% for post in posts %}
-        {% include 'post.html' with context %}
+      {% for event in events %}
+        {% include 'event.html' with context %}
       {% else %}
         <p>No posts found.</p>
       {% endfor %} 

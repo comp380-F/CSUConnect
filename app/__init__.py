@@ -34,8 +34,8 @@ def create_app(config_class=Config):
     from .user import user_bp
     app.register_blueprint(user_bp)
 
-    from .post import post_bp
-    app.register_blueprint(post_bp)
+    from .event import event_bp
+    app.register_blueprint(event_bp)
 
     return app
 

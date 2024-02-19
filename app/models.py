@@ -17,7 +17,7 @@ class User(db.Model, UserMixin):
     def __repr__(self):
         return '<User %r>' % self.username
 
-class Post(db.Model):
+class Event(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(200), nullable=False)
     description = db.Column(db.String(200), nullable=False)
@@ -27,8 +27,8 @@ class Post(db.Model):
     location = db.Column(db.String(200), nullable=True)
     dateTime = db.Column(db.String(200), nullable=True)
 
-    user = db.relationship('User', backref=db.backref('posts', lazy=True))
+    user = db.relationship('User', backref=db.backref('events', lazy=True))
 
     def __repr__(self):
-        return '<Post %r>' % self.id
+        return '<Event %r>' % self.id
 
