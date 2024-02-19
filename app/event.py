@@ -8,7 +8,7 @@ event_bp = Blueprint('event', __name__)
 
 @event_bp.route('/new-event', methods=['POST', 'GET'])
 @login_required
-def new_post():
+def new_event():
     if request.method == 'POST':
         if not current_user.is_authenticated:
             return redirect('/login')
