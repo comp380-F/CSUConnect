@@ -15,14 +15,54 @@
       </div>
       <div>
         <label for="description" class="block text-sm font-medium text-gray-700">Description</label>
-        <textarea name="description" id="description" rows="10" class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm" ></textarea>
+        <textarea name="description" id="description" rows="5" class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm" ></textarea>
       </div>
       <div class="mb-4">
         <label for="club" class="block text-sm font-medium text-gray-700">Club</label>
         <input type="text" name="club" id="club" class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm" required>
       </div>
+      <div class="mb-4">
+        <label for="location" class="block text-sm font-medium text-gray-700">Location</label>
+        <input type="text" name="location" id="location" class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm">
+      </div>
+      <div>
+        <label for="datetime" class="block text-sm font-medium text-gray-700">Date and Time</label>
+        <input type="datetime-local" name="datetime" id="datetime" class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm"/>
+        <label for="tbd" class="block text-sm font-medium text-gray-700 mt-2">
+          <input type="checkbox" id="tbd" name="tbd"> TBD
+        </label>
+      </div>
       <input type="submit" value="Add Post" class="w-full bg-csun-red hover:bg-red-700 text-white font-bold py-2 px-4 rounded cursor-pointer" />
     </form>
   </div>
 </div>
+
+<script>
+  const datetimeInput = document.getElementById('datetime');
+  const tbdCheckbox = document.getElementById('tbd');
+
+  // Get current date and year
+  const currentDate = new Date();
+  const currentYear = currentDate.getFullYear();
+
+  // Set max and min values for the datetime input
+  datetimeInput.max = `${currentYear + 9}-12-31T23:59`; // Max year is current year + 9
+  datetimeInput.min = `${currentDate.toISOString().slice(0, 10)}T00:00`; // Min is current date
+
+  tbdCheckbox.addEventListener('change', function() {
+    if (this.checked) {
+      datetimeInput.disabled = true;
+      datetimeInput.value = ''; // Clear the value if TBD is checked
+      datetimeInput.style.opacity = '0.3'; // Gray out input
+      datetimeInput.style.pointerEvents = 'none'; // Disable pointer events
+    }
+    else {
+      datetimeInput.disabled = false;
+      datetimeInput.style.opacity = '1'; // Restore opacity
+      datetimeInput.style.pointerEvents = 'auto'; // Enable pointer events
+    }
+  });
+</script>
+
+
 {% endblock %}

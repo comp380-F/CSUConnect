@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This is a simple website for student organizations at CSUN to post about their events.
+Website for student organizations at CSUN to post about their events.
 
 ## Features
 

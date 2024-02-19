@@ -2,6 +2,7 @@ from flask import Blueprint, render_template, redirect, url_for, request
 from . import db
 from .models import User, Post
 from flask_login import current_user, login_required
+from datetime import datetime
 
 post_bp = Blueprint('post', __name__)
 
@@ -15,8 +16,17 @@ def new_post():
         post_title = request.form['title']
         post_description = request.form['description']
         post_club = request.form['club']
+        post_location = request.form['location']
+        post_dateTime = request.form['datetime']
 
-        new_post = Post(title=post_title, description=post_description, club=post_club, user_id=current_user.id)
+        # Check if 'tbd' checkbox is checked
+        if 'tbd' in request.form:
+            post_dateTime = None  # Set to None if TBD
+        else:
+            post_dateTime = datetime.fromisoformat(request.form['datetime']).strftime('%B %d, %Y at %I:%M %p')
+
+        new_post = Post(title=post_title, description=post_description, 
+        club=post_club, user_id=current_user.id, location=post_location, dateTime=post_dateTime)
 
         try:
             db.session.add(new_post)
