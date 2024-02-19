@@ -15,8 +15,11 @@ def new_post():
         post_title = request.form['title']
         post_description = request.form['description']
         post_club = request.form['club']
+        post_location = request.form['location']
+        post_dateTime = request.form['datetime']
 
-        new_post = Post(title=post_title, description=post_description, club=post_club, user_id=current_user.id)
+        new_post = Post(title=post_title, description=post_description, 
+        club=post_club, user_id=current_user.id, location=post_location, dateTime=post_dateTime)
 
         try:
             db.session.add(new_post)
