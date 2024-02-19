@@ -3,6 +3,7 @@ from . import db
 from .models import User, Event
 from flask_login import current_user, login_required
 from datetime import datetime
+import sys
 
 event_bp = Blueprint('event', __name__)
 
@@ -19,9 +20,9 @@ def new_event():
         event_location = request.form['location']
 
         # Check if 'tbd' checkbox is checked
-        if 'tbd' in request.form:
+        if 'tbd' in request.form or request.form['datetime'] == '':
             event_dateTime = None  # Set to None if TBD
-        else:
+        else:            
             event_dateTime = datetime.fromisoformat(request.form['datetime']).strftime('%B %d, %Y at %I:%M %p')
 
         new_event = Event(title=event_title, description=event_description, 
