@@ -1,5 +1,4 @@
 from flask import Blueprint, render_template, redirect
-from .models import User, Post
 from flask_login import current_user
 
 user_bp = Blueprint('user', __name__)
