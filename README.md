@@ -4,6 +4,9 @@
 
 Website for student organizations at CSUN to post about their events.
 
+![progress](https://github.com/comp380-F/OnlyClubs/assets/23270085/1711c2aa-d249-4d9e-9223-0c900795f8e2)
+
+
 ## Features
 
 - Event posting by organizations
