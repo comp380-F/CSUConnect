@@ -1,8 +1,8 @@
-# OnlyClubs: A Website for Student Organization Events
+# CSUConnect: A Website for Student Organization Events
 
 ## Introduction
 
-Website for student organizations at CSUN to post about their events.
+Website for student organizations at California State Universities to post about their events.
 
 ## Features
 
