@@ -15,6 +15,9 @@ class User(db.Model, UserMixin):
     last_name = db.Column(db.String(100), nullable=False)
     email = db.Column(db.String(100), unique=True, nullable=False)
     club = db.Column(db.String(100), nullable=True)
+    bio = db.Column(db.String(400), nullable=True)
+    date_joined = db.Column(db.DateTime, default=datetime.utcnow)  
+    profile_pic = db.Column(db.String(200), nullable=False, default='default.jpg')
 
     events_attending = db.relationship('Event', secondary=event_attendance,
     backref=db.backref('attendees', lazy='dynamic'))
