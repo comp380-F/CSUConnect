@@ -10,6 +10,7 @@ class User(db.Model, UserMixin):
     last_name = db.Column(db.String(100), nullable=False)
     email = db.Column(db.String(100), unique=True, nullable=False)
     club = db.Column(db.String(100), nullable=True)
+    bio = db.Column(db.String(400), nullable=True)
     
     def full_name(self):
         return self.first_name + ' ' + self.last_name

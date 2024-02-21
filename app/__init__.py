@@ -1,9 +1,10 @@
 import os
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
-from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
+from flask_migrate import Migrate
 
+# Import the config class
 from config import Config
 
 db = SQLAlchemy()
@@ -15,9 +16,16 @@ def create_app(config_class=Config):
     app = Flask(__name__)
     app.config.from_object(config_class)
 
+    # Initialize the db
     db.init_app(app)
+
+    # Initialize the db migration
+    migrate = Migrate(app, db)
+
+    # Initialize the login manager
     login_manager.init_app(app)
 
+    # Import the models
     from app.models import User
 
     # User loader func
@@ -25,6 +33,7 @@ def create_app(config_class=Config):
     def load_user(user_id):
         return db.session.get((User), int(user_id))
 
+    # Register the blueprints
     from .routes import bp as routes_bp
     app.register_blueprint(routes_bp)
 
