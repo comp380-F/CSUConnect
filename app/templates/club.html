@@ -1,0 +1,19 @@
+
+{% extends 'base.html' %}
+
+{% block title %}
+  <title> {{club.name}} </title>
+{% endblock %}
+
+{% block body %}
+
+<div class="h-screen bg-gray-50">
+  <div class="bg-white p-6 rounded-lg shadow mb-4 max-w-4xl mx-auto">
+    <h2>{{ club.name }}</h2>
+    <p>{{ club.description }}</p>
+    <p>Date Created: {{ club.date_created }}</p>
+    <p>Location: {{ club.location }}</p>
+  </div>
+</div>
+
+{% endblock %}
