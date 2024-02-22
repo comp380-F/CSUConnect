@@ -44,6 +44,16 @@ def read_more(id):
     event = Event.query.get_or_404(id)
     return render_template('read-more.html', event=event, user=current_user,  include_header=True)
 
+@event_bp.route('/events/join/<int:id>', methods=['POST'])
+@login_required
+def join_event(id):
+    event = Event.query.get_or_404(id)
+    if current_user not in event.attendees:
+        event.attendees.append(current_user)
+        db.session.commit()
+    return redirect(url_for('event.read_more', id=id))
+
+
 @event_bp.route('/delete/<int:id>')
 def delete(id):
     event_to_delete = Event.query.get_or_404(id)
