@@ -23,9 +23,9 @@
         Read More
       </a>
       {% if current_user in event.attendees %}
-        <a href="/events/unjoin/{{ event.id }}" class="btn-primary bg-csun-red hover:bg-red-700 text-white">
-          Joined
-        </a>
+      <form action="/events/unjoin/{{ event.id }}" method="post">
+        <button type="submit" class="btn-primary bg-csun-red text-white">Joined</button>
+    </form>
       {% else %}
         <form action="/events/join/{{ event.id }}" method="post">
             <button type="submit" class="btn-primary">Join Event</button>

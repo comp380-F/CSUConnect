@@ -51,9 +51,17 @@ def join_event(id):
     if current_user not in event.attendees:
         event.attendees.append(current_user)
         db.session.commit()
-    return redirect(url_for('event.read_more', id=id))
+    return redirect('/')
 
-
+@event_bp.route('/events/unjoin/<int:id>', methods=['POST'])
+@login_required
+def unjoin_event(id):
+    event = Event.query.get_or_404(id)
+    if current_user in event.attendees:
+        event.attendees.remove(current_user)
+        db.session.commit()
+    return redirect('/')
+    
 @event_bp.route('/delete/<int:id>')
 def delete(id):
     event_to_delete = Event.query.get_or_404(id)
