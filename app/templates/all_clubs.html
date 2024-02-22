@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  <title> All Clubs </title>
+{% endblock %}
+
+{% block body %}
+
+<div class="h-screen py-5 bg-gray-50">
+    <div class="text-xl text-center mb-4 max-w-4xl mx-auto">
+      <h1 >All Clubs</h1>
+    </div>
+    {% for club in clubs %} 
+    <div class="bg-white p-6 rounded-lg shadow mb-4 max-w-4xl mx-auto">
+        <h2 class="text-xl">{{ club.name }}</h2>
+        <p>Description: {{ club.description }}</p>
+        <p>Date Created: {{ club.date_created }}</p>
+        <p>Location: {{ club.location }}</p>
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock %}
