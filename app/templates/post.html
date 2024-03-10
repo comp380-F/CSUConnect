@@ -1,0 +1,33 @@
+{% block post %}
+<div class="p-6 mb-4 bg-white rounded-lg shadow">
+    <div class="grid grid-cols-12 mb-4">
+        <i class="col-span-1 fas fa-user-circle fa-2x text-csun-red"></i>
+        <h2 class="col-span-4 mb-2 font-bold text-gray-800 text-1xl">
+            {{ post.user.full_name() }}
+            <p class=" text-[0.6rem] text-gray-700">{{ post.date_created.strftime('%Y-%m-%d') }}</p>
+        </h2>
+
+    </div>
+    <p class="my-4 text-gray-700">{{ post.text }}</p>
+    <div class="flex justify-between">
+        <div class="flex items-center">
+            <button class="mr-2 text-gray-700">
+                <i class="far fa-thumbs-up"></i>
+            </button>
+            <p class="text-gray-700">Like</p>
+        </div>
+        <div class="flex items-center">
+            <button class="mr-2 text-gray-700">
+                <i class="far fa-comment"></i>
+            </button>
+            <p class="text-gray-700">Comment</p>
+        </div>
+        <div class="flex items-center">
+            <button class="mr-2 text-gray-700">
+                <i class="fas fa-share-alt"></i>
+            </button>
+            <p class="text-gray-700">Share</p>
+        </div>
+    </div>
+</div>
+{% endblock %}
