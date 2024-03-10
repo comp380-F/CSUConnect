@@ -1,18 +1,47 @@
-{% extends 'base.html' %} 
+{% extends 'base.html' %}
 
 {% block head %}
 <title>CSUConnect</title>
-{% endblock %} 
+{% endblock %}
 
-{% block body %} 
-<div class="min-h-screen bg-gray-100 py-10">
-  <div class="max-w-4xl mx-auto px-4">
-    <h3 class="text-xl font-semibold mb-4">Recent Posts</h3>
-      {% for event in events %}
-        {% include 'event.html' with context %}
-      {% else %}
-        <p>No posts found.</p>
-      {% endfor %} 
+{% block body %}
+
+<div
+  class="relative flex flex-col items-center justify-center h-screen bg-center bg-no-repeat bg-cover bg-[url('../../img/front-header-bg.jpg')]">
+  <div class="absolute inset-0 bg-gray-600 bg-center bg-cover opacity-30 z-2">
+  </div>
+
+  <div class="container relative z-10 px-6 py-6 mx-auto bg-black/[0.6] h-60">
+    <div class="absolute inset-0 px-6 py-6 mx-auto text-center z-12 ">
+      <h1 class="mb-4 text-5xl font-bold text-center text-csun-red">CSUConnect</h1>
+      <p class="mb-8 text-xl text-center text-white">Find your community. Discover events. Ignite your passions.</p>
+      <a href="/clubs" class="text-white btn-primary">Explore Clubs</a>
+    </div>
+  </div>
+
+</div>
+
+
+
+<div class="grid min-h-screen px-2 py-10 bg-gray-100 md:justify-between md:grid-cols-8 md:gap-4 md:grid-flow-col">
+
+  <div class="md:col-start-2 md:col-span-4">
+    <h3 class="mb-4 text-xl font-semibold">Recent Posts</h3>
+    {% for event in events %}
+    {% include 'event.html' with context %}
+    {% else %}
+    <p>No posts found.</p>
+    {% endfor %}
+    </h3>
+  </div>
+
+  <div class="md:col-span-2">
+    <h3 class="mb-4 text-xl font-semibold">Recent Events</h3>
+    {% for event in events %}
+    {% include 'event.html' with context %}
+    {% else %}
+    <p>No posts found.</p>
+    {% endfor %}
     </h3>
   </div>
 </div>

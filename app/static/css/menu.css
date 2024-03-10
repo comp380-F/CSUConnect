@@ -1,0 +1,52 @@
+@layer components
+{
+    .menu-container 
+    {
+        /* @apply z-200; */
+        @apply z-20;
+
+        @apply absolute;
+        @apply right-0;
+        @apply items-center;
+        @apply justify-end;
+        @apply w-full;
+        @apply text-black;
+        @apply md:text-white;
+        @apply bg-csun-red;
+        @apply md:bg-transparent;
+        @apply transition-opacity;
+        @apply transition-transform;
+        @apply duration-300;
+        @apply ease-linear;
+        @apply ease-in-out;
+        @apply opacity-0;
+        @apply md:flex;
+        @apply md:relative;
+        @apply top-full;
+        @apply md:opacity-100;
+    }
+    .menu-list {
+        /* @apply z-200; */
+        @apply z-20;
+
+        @apply flex;
+        @apply flex-col;
+        @apply w-full;
+        @apply md:flex-row;
+        @apply md:w-auto;
+    }
+    .menu-item
+    {
+        @apply z-20;
+        @apply text-center;
+        @apply py-2;
+        @apply md:mx-4;
+        @apply text-white;
+        @apply transition-all;
+        @apply border-csun-red;
+        @apply hover:text-gray-700;
+        @apply md:hover:p-2;
+        @apply hover:bg-white;
+        @apply focus:ring-opacity-75;
+    }
+}

@@ -2,6 +2,6 @@
 {
     .btn-primary
     {
-        @apply py-2 px-5 text-black border-2 border-csun-red hover:text-white hover:bg-csun-red focus:ring-opacity-75 transition-all;
+        @apply px-5 py-2 text-black transition-all border-2 border-csun-red hover:text-white hover:bg-csun-red focus:ring-opacity-75;
     }
 }

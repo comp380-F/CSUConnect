@@ -7,8 +7,8 @@ bp = Blueprint('main', __name__)
 
 @bp.route('/', methods=['GET', 'POST'])
 def index():
-    events = Event.query.order_by(Event.date_created).all()
-    users = User.query.order_by(User.id).all()
+    events = Event.query.order_by(Event.date_created.desc()).all()
+    # users = User.query.order_by(User.id).all()
     return render_template('index.html', events=events, user=current_user, include_header=True)
 
 
