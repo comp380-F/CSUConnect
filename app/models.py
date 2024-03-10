@@ -25,7 +25,6 @@ class User(db.Model, UserMixin):
     events_attending = db.relationship('Event', secondary=event_attendance,
     backref=db.backref('attendees', lazy='dynamic'))
 
-
     def full_name(self):
         return self.first_name + ' ' + self.last_name
 
@@ -69,3 +68,17 @@ class Club(db.Model):
 
     def __repr__(self):
         return '<Club %r>' % self.id
+    
+class Post(db.Model):
+    # Post details
+    id = db.Column(db.Integer, primary_key=True)
+    text = db.Column(db.String(200), nullable=False)
+    date_created = db.Column(db.DateTime, default=datetime.utcnow)
+
+    # Foreign keys
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    user = db.relationship('User', backref=db.backref('posts', lazy=True))
+
+
+    def __repr__(self):
+        return '<Event %r>' % self.id

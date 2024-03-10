@@ -6,6 +6,7 @@
 
 {% block body %}
 
+<!-- Front Banner -->
 <div
   class="relative flex flex-col items-center justify-center h-screen bg-center bg-no-repeat bg-cover bg-[url('../../img/front-header-bg.jpg')]">
   <div class="absolute inset-0 bg-gray-600 bg-center bg-cover opacity-30 z-2">
@@ -18,17 +19,15 @@
       <a href="/clubs" class="text-white btn-primary">Explore Clubs</a>
     </div>
   </div>
-
 </div>
 
 
-
+<!-- Index Main Content-->
 <div class="grid min-h-screen px-2 py-10 bg-gray-100 md:justify-between md:grid-cols-8 md:gap-4 md:grid-flow-col">
-
   <div class="md:col-start-2 md:col-span-4">
     <h3 class="mb-4 text-xl font-semibold">Recent Posts</h3>
-    {% for event in events %}
-    {% include 'event.html' with context %}
+    {% for post in posts %}
+    {% include 'post.html' with context %}
     {% else %}
     <p>No posts found.</p>
     {% endfor %}
@@ -36,7 +35,7 @@
   </div>
 
   <div class="md:col-span-2">
-    <h3 class="mb-4 text-xl font-semibold">Recent Events</h3>
+    <h3 class="mb-4 text-xl font-semibold">Events</h3>
     {% for event in events %}
     {% include 'event.html' with context %}
     {% else %}

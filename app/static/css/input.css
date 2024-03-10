@@ -1,7 +1,6 @@
 @import './buttons.css';
 @import './sidebar.css';
 @import './menu.css';
-@import './banner.css';
 
 @tailwind base;
 @tailwind components;
